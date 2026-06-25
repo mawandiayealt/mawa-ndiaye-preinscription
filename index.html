@@ -1,8 +1,8 @@
 
 <!DOCTYPE html>
-<html lang="fr">
-<head>
-<meta charset="UTF-8">
+<!-- saved from url=(0065)file:///C:/Users/Easy%20Services%20Pro/Downloads/index%20(4).html -->
+<html lang="fr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pré-inscription — Masterclass Mawa Ndiaye</title>
 <meta name="description" content="Pré-inscrivez-vous à la Masterclass Stratégie, Promotion et Manœuvres Commerciales avec Mawa Ndiaye. Un mercredi sur deux, 3h en direct.">
@@ -71,7 +71,7 @@
     display:flex;
     flex-wrap:wrap;
     gap:6px;
-    margin-bottom:24px;
+    margin-bottom:22px;
   }
 
   .fact-pill{
@@ -82,6 +82,93 @@
     border:1px solid var(--line);
     padding:5px 10px;
     border-radius:999px;
+  }
+
+  .payment-box{
+    background:var(--bg-cream);
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:14px 16px;
+    margin-bottom:14px;
+  }
+
+  .payment-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:6px 0;
+    font-size:13.5px;
+  }
+
+  .payment-row + .payment-row{
+    border-top:1px solid var(--line);
+  }
+
+  .payment-label{
+    font-weight:700;
+    color:var(--green-deep);
+  }
+
+  .payment-value{
+    color:var(--ink);
+    font-weight:600;
+  }
+
+  .payment-note{
+    font-size:12.5px;
+    color:var(--ink-soft);
+    margin-bottom:18px;
+  }
+
+  .step-header{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin:26px 0 14px;
+  }
+
+  .step-header:first-of-type{
+    margin-top:0;
+  }
+
+  .step-number{
+    flex-shrink:0;
+    width:26px;
+    height:26px;
+    border-radius:50%;
+    background:var(--green-deep);
+    color:var(--white);
+    font-size:13px;
+    font-weight:700;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+
+  .step-title{
+    font-size:13.5px;
+    font-weight:700;
+    color:var(--green-deep);
+    text-transform:uppercase;
+    letter-spacing:0.04em;
+  }
+
+  .step-block{
+    border-left:2px solid var(--line);
+    margin-left:13px;
+    padding-left:24px;
+    padding-bottom:4px;
+  }
+
+  .whatsapp-instruction{
+    background:#E9F7EF;
+    border:1px solid #B7E4C7;
+    border-radius:6px;
+    padding:12px 14px;
+    font-size:13px;
+    color:var(--ink);
+    margin-bottom:4px;
+    line-height:1.5;
   }
 
   .field{
@@ -102,6 +189,7 @@
   }
 
   .field input[type="text"],
+  .field input[type="email"],
   .field input[type="tel"]{
     width:100%;
     font-size:14px;
@@ -207,44 +295,99 @@
 <div class="card">
 
   <div id="success-message">
-    <h3>Merci, c'est enregistré.</h3>
-    <p>Mawa ou son équipe vous contactera sur WhatsApp pour finaliser votre place.</p>
+    <h3>Merci, c'est presque fini ✅</h3>
+    <p>Votre inscription est enregistrée. Il ne reste qu'une étape : envoyez la <strong>capture d'écran de votre paiement</strong> sur WhatsApp au <strong>+221 77 746 43 44</strong> pour valider définitivement votre place.</p>
+    <p style="margin-top:10px;">Le solde de 34 000 FCFA vous sera demandé séparément, avant l'envoi du lien de connexion.</p>
   </div>
 
   <form id="preinscription-form" action="https://formspree.io/f/xrewpprk" method="POST">
     <div class="eyebrow">Pré-inscription</div>
-    <h1>Stratégie, Promotion & Manœuvres Commerciales</h1>
+    <h1>Stratégie, Promotion &amp; Manœuvres Commerciales</h1>
     <p class="sub">Masterclass Live avec Mawa Ndiaye</p>
     <div class="facts">
-      <span class="fact-pill">Un mercredi sur deux</span>
-      <span class="fact-pill">3h de live</span>
+      <span class="fact-pill">Mercredi 8 juillet</span>
+      <span class="fact-pill">17h30 · 3h de live</span>
       <span class="fact-pill">35 000 FCFA</span>
     </div>
 
-    <div class="field">
-      <label for="name">Nom complet <span class="req">*</span></label>
-      <input type="text" id="name" name="Nom complet" required autocomplete="name">
+    <!-- ÉTAPE 1 : PAYER L'ACOMPTE -->
+    <div class="step-header">
+      <span class="step-number">1</span>
+      <span class="step-title">Payez l'acompte maintenant</span>
     </div>
-
-    <div class="field">
-      <label for="whatsapp">Numéro WhatsApp <span class="req">*</span></label>
-      <input type="tel" id="whatsapp" name="WhatsApp" placeholder="+221 ..." required autocomplete="tel">
-    </div>
-
-    <div class="field">
-      <fieldset>
-        <label>35 000 FCFA pour 3h en direct : ça vous semble juste ou trop cher ? <span class="req">*</span></label>
-        <div class="options">
-          <label class="option"><input type="radio" name="Avis prix" value="C'est juste" required> C'est juste pour ce que ça propose</label>
-          <label class="option"><input type="radio" name="Avis prix" value="C'est un peu cher" required> C'est un peu cher pour moi</label>
-          <label class="option"><input type="radio" name="Avis prix" value="Besoin de plus d'infos" required> J'ai besoin de plus d'infos avant de me décider</label>
+    <div class="step-block">
+      <div class="payment-box">
+        <div class="payment-row">
+          <span class="payment-label">Wave</span>
+          <span class="payment-value">+221 77 746 43 44</span>
         </div>
-      </fieldset>
+        <div class="payment-row">
+          <span class="payment-label">Orange Money</span>
+          <span class="payment-value">+221 77 746 43 44</span>
+        </div>
+      </div>
+      <p class="payment-note">Envoyez <strong>1 000 FCFA (non remboursable)</strong> dès maintenant via Wave ou Orange Money, au numéro ci-dessus, pour bloquer votre place. Le solde de 34 000 FCFA vous sera demandé séparément, avant l'envoi du lien de connexion.</p>
     </div>
 
-    <input type="hidden" name="_subject" value="Nouvelle pré-inscription — Masterclass Mawa Ndiaye">
+    <!-- ÉTAPE 2 : REMPLIR LE FORMULAIRE -->
+    <div class="step-header">
+      <span class="step-number">2</span>
+      <span class="step-title">Remplissez vos informations</span>
+    </div>
+    <div class="step-block">
+      <div class="field">
+        <label for="name">Nom complet <span class="req">*</span></label>
+        <input type="text" id="name" name="Nom complet" required="" autocomplete="name">
+      </div>
 
-    <button type="submit" class="submit-btn">Envoyer ma pré-inscription</button>
+      <div class="field">
+        <label for="whatsapp">Numéro WhatsApp <span class="req">*</span></label>
+        <input type="tel" id="whatsapp" name="WhatsApp" placeholder="+221 ..." required="" autocomplete="tel">
+      </div>
+
+      <div class="field">
+        <label for="email">Adresse email <span class="req">*</span></label>
+        <input type="email" id="email" name="Email" placeholder="vous@exemple.com" required="" autocomplete="email">
+      </div>
+
+      <div class="field">
+        <fieldset>
+          <label>35 000 FCFA pour 3h en direct : ça vous semble juste ou trop cher ? <span class="req">*</span></label>
+          <div class="options">
+            <label class="option"><input type="radio" name="Avis prix" value="C&#39;est juste" required=""> C'est juste pour ce que ça propose</label>
+            <label class="option"><input type="radio" name="Avis prix" value="C&#39;est un peu cher" required=""> C'est un peu cher pour moi</label>
+            <label class="option"><input type="radio" name="Avis prix" value="Besoin de plus d&#39;infos" required=""> J'ai besoin de plus d'infos avant de me décider</label>
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="field">
+        <fieldset>
+          <label>Moyen utilisé pour l'acompte <span class="req">*</span></label>
+          <div class="options">
+            <label class="option"><input type="radio" name="Moyen de paiement" value="Wave" required=""> Wave</label>
+            <label class="option"><input type="radio" name="Moyen de paiement" value="Orange Money" required=""> Orange Money</label>
+          </div>
+        </fieldset>
+      </div>
+    </div>
+
+    <!-- ÉTAPE 3 : ENVOYER LA PREUVE -->
+    <div class="step-header">
+      <span class="step-number">3</span>
+      <span class="step-title">Envoyez la preuve sur WhatsApp</span>
+    </div>
+    <div class="step-block">
+      <div class="whatsapp-instruction">
+        📲 Après avoir envoyé ce formulaire, faites une <strong>capture d'écran de votre paiement</strong> et envoyez-la sur WhatsApp au <strong>+221 77 746 43 44</strong>, avec votre nom. Votre place sera validée dès réception.
+        <br><br>
+        Autre moyen de paiement souhaité ? Contactez Mawa directement sur ce même numéro WhatsApp.
+      </div>
+    </div>
+
+    <input type="hidden" name="_subject" value="Pré-inscription + acompte — Masterclass Mawa Ndiaye">
+
+    <button type="submit" class="submit-btn">Envoyer mon inscription</button>
     <p class="foot-note">Vos infos servent uniquement à vous recontacter pour cette masterclass.</p>
   </form>
 
@@ -274,12 +417,13 @@
         throw new Error('Erreur réseau');
       }
     } catch(err){
-      submitBtn.textContent = 'Envoyer ma pré-inscription';
+      submitBtn.textContent = 'Envoyer mon inscription';
       submitBtn.disabled = false;
       alert("Une erreur est survenue. Réessayez, ou contactez Mawa directement sur WhatsApp.");
     }
   });
 </script>
 
-</body>
-</html>
+
+
+</body></html>
