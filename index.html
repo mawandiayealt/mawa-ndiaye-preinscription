@@ -4,20 +4,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Masterclass Commerciale — 15 Juillet 2026 — Mawa Ndiaye</title>
-<meta name="description" content="Faites passer votre offre de intéressante à évidente. Masterclass live avec Mawa Ndiaye — Mercredi 15 Juillet 2026, 17h30 à 20h30.">
+<title>EvOffre · Évaluez votre offre — Masterclass Mawa Ndiaye</title>
+<meta name="description" content="Évaluez gratuitement votre offre en 2 minutes, puis réservez votre place à la Masterclass Commerciale du 15 Juillet 2026 avec Mawa Ndiaye.">
 <style>
   :root{
-    /* === PALETTE SANS VERT === */
-    --terracotta:#C85A1A;      /* Terracotta — promesse, CTA, accents */
-    --terracotta-dark:#A8470F; /* Terracotta foncé — hover bouton */
-    --dark:#2B2218;            /* Brun foncé — remplace le vert (fond page, titres, step numbers) */
-    --dark-deep:#1A1410;       /* Brun très foncé — fond page */
-    --ochre:#D9A53D;           /* Ochre — eyebrow, pills, highlights */
-    --ochre-light:#F5E6C0;     /* Ochre clair — fond card, bg-cream */
-    --cream:#FDF6EC;           /* Cream — fond formulaire, inputs */
-    --cream-border:#E8D5B0;    /* Cream bordure — séparateurs */
-    /* === TEXTE === */
+    /* === PALETTE POSTER VISUEL === */
+    --terracotta:#C85A1A;
+    --terracotta-dark:#A8470F;
+    --forest-green:#1F4A2C;
+    --forest-green-deep:#0F2D18;
+    --ochre:#D9A53D;
+    --ochre-light:#F5E6C0;
+    --cream:#FDF6EC;
+    --cream-border:#E8D5B0;
     --ink:#1B1B16;
     --ink-soft:#5B5B4F;
     --white:#FFFFFF;
@@ -26,7 +25,7 @@
   *{ margin:0; padding:0; box-sizing:border-box; }
 
   body{
-    background:var(--ochre-light);
+    background:var(--cream);
     color:var(--ink);
     font-family:'Helvetica Neue', Arial, sans-serif;
     line-height:1.5;
@@ -34,50 +33,550 @@
     min-height:100vh;
   }
 
-  /* LAYOUT UNE COLONNE CENTRÉE */
-  .page-wrap{
+  .screen{ display:none; }
+  .screen.active{ display:block; }
+
+  /* ============================================ */
+  /* TOP BAR — progression */
+  /* ============================================ */
+  .progress-bar{
+    background:var(--forest-green);
+    padding:14px 20px;
     display:flex;
+    align-items:center;
     justify-content:center;
-    min-height:100vh;
-    padding:40px 16px 56px;
+    gap:10px;
+    border-bottom:1px solid rgba(255,255,255,0.08);
   }
 
-  .col-right{
-    width:100%;
-    max-width:520px;
+  .progress-step{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-size:12px;
+    font-weight:600;
+    color:rgba(255,255,255,0.4);
+  }
+
+  .progress-step.is-active{ color:var(--ochre); }
+  .progress-step.is-done{ color:rgba(255,255,255,0.7); }
+
+  .progress-dot{
+    width:20px; height:20px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.1);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:11px;
+    font-weight:700;
+  }
+
+  .progress-step.is-active .progress-dot{ background:var(--ochre); color:var(--forest-green-deep); }
+  .progress-step.is-done .progress-dot{ background:var(--terracotta); color:white; }
+
+  .progress-line{
+    width:24px; height:1px;
+    background:rgba(255,255,255,0.2);
+  }
+
+  /* ============================================ */
+  /* ÉCRAN 1 — EVOFFRE */
+  /* ============================================ */
+  .evoffre-wrap{
+    max-width:1100px;
+    margin:0 auto;
+    padding:28px 16px 90px;
+  }
+
+  .evoffre-intro{
+    text-align:center;
+    max-width:680px;
+    margin:0 auto 36px;
+  }
+
+  .evoffre-eyebrow{
+    display:inline-block;
+    text-transform:uppercase;
+    letter-spacing:0.16em;
+    font-size:11px;
+    color:var(--ochre);
+    font-weight:700;
+    margin-bottom:14px;
+  }
+
+  .evoffre-intro h1{
+    font-family:'Georgia', serif;
+    font-size:clamp(24px, 4vw, 34px);
+    color:var(--forest-green-deep);
+    line-height:1.3;
+    margin-bottom:12px;
+  }
+
+  .evoffre-intro h1 em{
+    color:var(--terracotta);
+    font-style:normal;
+  }
+
+  .evoffre-intro p{
+    font-size:14px;
+    color:var(--ink-soft);
+    line-height:1.7;
+  }
+
+  .evoffre-pain{
+    font-size:14.5px;
+    color:var(--ink-soft);
+    line-height:1.75;
+    max-width:560px;
+    margin:0 auto 18px;
+  }
+
+  .evoffre-pain strong{ color:var(--terracotta); }
+
+  .evoffre-why{
+    background:var(--ochre-light);
+    border:1px solid var(--cream-border);
+    border-radius:10px;
+    padding:16px 20px;
+    max-width:560px;
+    margin:0 auto 22px;
+    text-align:left;
+  }
+
+  .evoffre-why p{
+    font-size:13px;
+    color:var(--ink-soft);
+    line-height:1.7;
+  }
+
+  .evoffre-why p + p{ margin-top:8px; }
+
+  .evoffre-why strong{ color:var(--forest-green-deep); }
+  .evoffre-why .highlight{ color:var(--terracotta); font-weight:700; }
+
+  .evoffre-steps{
+    display:flex;
+    justify-content:center;
+    gap:18px;
+    flex-wrap:wrap;
+    margin-bottom:6px;
+  }
+
+  .evoffre-step{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-size:12px;
+    font-weight:600;
+    color:var(--ink-soft);
+  }
+
+  .evoffre-step-num{
+    width:20px; height:20px;
+    border-radius:50%;
+    background:var(--forest-green);
+    color:var(--white);
+    font-size:11px;
+    font-weight:700;
+    display:flex;
+    align-items:center;
+    justify-content:center;
     flex-shrink:0;
   }
 
-  /* LIGNE D'ACCROCHE AU-DESSUS DU FORMULAIRE */
-  .intro-line{
-    text-align:center;
-    margin-bottom:20px;
-    padding:0 8px;
+  .grid-2{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
   }
 
-  .intro-eyebrow{
+  .dimension-card{
+    background:var(--cream);
+    border-radius:14px;
+    padding:18px 18px 22px;
+    border:1px solid var(--cream-border);
+    transition:0.15s;
+  }
+
+  .dimension-title{
+    font-size:16px;
+    font-weight:700;
+    color:var(--forest-green);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom:1px dashed var(--cream-border);
+    padding-bottom:10px;
+    margin-bottom:12px;
+  }
+
+  .dimension-title span{
+    background:var(--forest-green);
+    color:var(--white);
+    font-size:10px;
+    font-weight:600;
+    padding:3px 10px;
+    border-radius:20px;
+  }
+
+  .critere{
+    margin:10px 0;
+    background:var(--white);
+    border-radius:10px;
+    padding:10px 12px;
+    border:1px solid var(--cream-border);
+  }
+
+  .critere-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    flex-wrap:wrap;
+    gap:4px;
+  }
+
+  .critere-name{ font-weight:700; color:var(--ink); font-size:13.5px; }
+
+  .critere-points{
+    font-size:11px;
+    background:var(--ochre-light);
+    padding:2px 9px;
+    border-radius:20px;
+    color:var(--forest-green);
+  }
+
+  .critere-help{
+    font-size:11.5px;
+    color:var(--ink-soft);
+    margin:4px 0 6px;
+    padding:6px 8px;
+    background:#F9F5ED;
+    border-radius:6px;
+    line-height:1.5;
+  }
+
+  .critere-help strong{ color:var(--terracotta); }
+
+  select{
+    background:var(--white);
+    border:1px solid var(--cream-border);
+    border-radius:20px;
+    padding:4px 8px;
+    font-weight:600;
+    font-size:13px;
+    color:var(--ink);
+    width:64px;
+    cursor:pointer;
+  }
+
+  select:focus{ outline:2px solid var(--ochre); border-color:transparent; }
+
+  .note-indicator{
+    display:inline-block;
+    font-size:12px;
+    font-weight:600;
+    color:var(--forest-green);
+    background:var(--ochre-light);
+    padding:3px 9px;
+    border-radius:20px;
+  }
+
+  .sous-total{
+    margin-top:10px;
+    padding:6px 2px;
+    font-weight:700;
+    font-size:13px;
+    color:var(--forest-green);
+    border-top:2px solid var(--cream-border);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+  }
+
+  .score-box{
+    background:var(--forest-green);
+    color:var(--white);
+    border-radius:30px;
+    padding:3px 14px;
+    font-size:13px;
+  }
+
+  .recap{
+    margin:28px 0 0;
+    background:var(--cream);
+    border:1px solid var(--cream-border);
+    border-radius:18px;
+    padding:24px 22px;
+  }
+
+  .recap h3{ color:var(--forest-green-deep); font-size:15px; font-weight:700; }
+
+  .recap-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+
+  .score-total{
+    font-size:24px;
+    font-weight:700;
+    color:var(--white);
+    background:var(--terracotta);
+    padding:6px 20px;
+    border-radius:40px;
+  }
+
+  .recap-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(120px,1fr));
+    gap:8px;
+    margin:14px 0;
+  }
+
+  .recap-item{
+    background:var(--ochre-light);
+    border-radius:30px;
+    padding:6px 14px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-weight:600;
+    font-size:12.5px;
+    color:var(--forest-green-deep);
+  }
+
+  .interpretation{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+    margin-top:10px;
+  }
+
+  .badge{
+    font-weight:600;
+    font-size:13px;
+    padding:6px 14px;
+    border-radius:30px;
+    background:var(--ochre-light);
+    color:var(--terracotta);
+  }
+
+  .btn-reset{
+    background:transparent;
+    border:1px solid var(--cream-border);
+    color:var(--ink-soft);
+    padding:7px 16px;
+    border-radius:30px;
+    font-weight:600;
+    font-size:12.5px;
+    cursor:pointer;
+    transition:0.15s;
+  }
+
+  .btn-reset:hover{ background:var(--ochre-light); }
+
+  .level-label{
+    margin-top:10px;
+    font-size:14px;
+    font-weight:700;
+    color:var(--forest-green-deep);
+  }
+
+  /* CTA vers étape 2 */
+  .cta-next-wrap{
+    text-align:center;
+    margin-top:24px;
+    padding-top:20px;
+    border-top:1px solid var(--cream-border);
+  }
+
+  .cta-next-text{
+    font-size:13.5px;
+    color:var(--ink-soft);
+    margin-bottom:14px;
+    line-height:1.7;
+  }
+
+  .cta-next-text strong{ color:var(--terracotta); }
+
+  .btn-next{
+    display:inline-block;
+    background:var(--terracotta);
+    color:var(--white);
+    font-size:15px;
+    font-weight:700;
+    padding:14px 32px;
+    border-radius:30px;
+    border:none;
+    cursor:pointer;
+    transition:background 0.15s, transform 0.1s;
+    letter-spacing:0.02em;
+  }
+
+  .btn-next:hover{ background:var(--terracotta-dark); }
+  .btn-next:active{ transform:scale(0.98); }
+  .btn-next:disabled{ opacity:0.4; cursor:not-allowed; }
+
+  .btn-next-hint{
+    font-size:11.5px;
+    color:var(--ink-soft);
+    margin-top:10px;
+  }
+
+  /* ============================================ */
+  /* ÉCRAN 2 — PRÉ-INSCRIPTION (deux colonnes) */
+  /* ============================================ */
+  .page-wrap{
+    display:flex;
+    align-items:flex-start;
+    gap:0;
+    min-height:calc(100vh - 53px);
+  }
+
+  .col-left{
+    flex:1;
+    background:var(--ochre-light);
+    padding:52px 40px 52px;
+    min-height:calc(100vh - 53px);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    position:relative;
+    overflow:hidden;
+  }
+
+  .col-left::before{
+    content:'';
+    position:absolute;
+    top:-60px; right:-60px;
+    width:240px; height:240px;
+    border-radius:50%;
+    background:var(--terracotta);
+    opacity:0.10;
+  }
+
+  .col-left::after{
+    content:'';
+    position:absolute;
+    bottom:-40px; left:-40px;
+    width:160px; height:160px;
+    border-radius:50%;
+    background:var(--forest-green);
+    opacity:0.08;
+  }
+
+  .col-right{
+    width:460px;
+    flex-shrink:0;
+    background:var(--cream);
+    padding:32px 24px 90px;
+    min-height:calc(100vh - 53px);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+  }
+
+  .eyebrow{
+    display:inline-block;
     text-transform:uppercase;
-    letter-spacing:0.14em;
+    letter-spacing:0.16em;
     font-size:11px;
     color:var(--terracotta);
     font-weight:700;
-    margin-bottom:10px;
+    margin-bottom:20px;
+    position:relative;
+    z-index:1;
   }
 
-  .intro-line h1{
+  .hero-promise{ position:relative; z-index:1; margin-bottom:10px; }
+
+  .hero-label{
+    font-size:13px;
+    color:var(--ink-soft);
+    text-transform:uppercase;
+    letter-spacing:0.12em;
+    margin-bottom:12px;
+  }
+
+  .promise-line{
     font-family:'Georgia', serif;
-    font-weight:400;
-    font-size:clamp(20px, 4.2vw, 26px);
-    color:var(--dark);
-    line-height:1.4;
+    font-size:clamp(28px, 6vw, 48px);
+    line-height:1.15;
+    margin-bottom:6px;
   }
 
-  .intro-line h1 strong{
-    color:var(--terracotta);
+  .promise-before{ color:var(--ink-soft); font-style:italic; opacity:0.6; }
+  .promise-arrow{ display:inline-block; color:var(--terracotta); font-style:normal; font-size:0.8em; margin:0 8px; }
+  .promise-after{ color:var(--terracotta); font-style:normal; font-weight:700; }
+
+  .hero-sub{ font-size:15px; color:var(--ink-soft); margin-bottom:4px; font-style:italic; }
+  .hero-awa{ font-size:13px; color:var(--ink-soft); opacity:0.7; margin-bottom:24px; }
+
+  /* Score personnel rappelé en colonne gauche */
+  .your-score{
+    background:var(--cream);
+    border:1px solid var(--cream-border);
+    border-radius:10px;
+    padding:14px 18px;
+    max-width:420px;
+    margin:0 auto 24px;
+    position:relative;
+    z-index:1;
+    display:flex;
+    align-items:center;
+    gap:14px;
+  }
+
+  .your-score-num{
+    font-family:'Georgia', serif;
+    font-size:28px;
     font-weight:700;
+    color:var(--terracotta);
+    flex-shrink:0;
   }
 
-  /* CARD */
+  .your-score-text{
+    font-size:12.5px;
+    color:var(--ink-soft);
+    line-height:1.5;
+    text-align:left;
+  }
+
+  .your-score-text strong{ color:var(--forest-green-deep); }
+
+  .hero-accroche{
+    background:var(--cream);
+    border:1px solid var(--cream-border);
+    border-radius:8px;
+    padding:18px 20px;
+    max-width:480px;
+    margin:0 auto 28px;
+    position:relative;
+    z-index:1;
+  }
+
+  .hero-accroche p{ font-size:14px; color:var(--ink-soft); line-height:1.7; }
+  .hero-accroche p strong{ color:var(--terracotta); }
+  .hero-accroche .divider{ width:30px; height:2px; background:var(--terracotta); margin:12px auto; border-radius:2px; }
+
+  .pills{ display:flex; flex-wrap:wrap; justify-content:center; gap:8px; margin-bottom:8px; position:relative; z-index:1; }
+
+  .pill{
+    font-size:12px;
+    font-weight:600;
+    color:var(--white);
+    background:var(--forest-green);
+    padding:6px 14px;
+    border-radius:999px;
+  }
+
+  .pill.light{ background:var(--white); color:var(--ink-soft); border:1px solid var(--cream-border); }
+
   .card-wrap{ width:100%; }
 
   .card{
@@ -86,11 +585,6 @@
     border-radius:10px;
     padding:28px 24px 24px;
     box-shadow:0 24px 64px -16px rgba(0,0,0,0.5);
-  }
-
-  @media(max-width:800px){
-    .page-wrap{ padding:28px 16px 40px; }
-    .card{ border-radius:10px; }
   }
 
   .card-eyebrow{
@@ -106,190 +600,12 @@
     font-family:'Georgia', serif;
     font-size:20px;
     font-weight:400;
-    color:var(--dark);
+    color:var(--forest-green);
     line-height:1.3;
     margin-bottom:6px;
   }
 
-  .card-sub{
-    font-size:13px;
-    color:var(--ink-soft);
-    margin-bottom:18px;
-  }
-
-  /* === NOUVEAU : TABLEAU RÉCAPITULATIF ACOMPTE / SOLDE === */
-  .price-recap{
-    background:var(--cream);
-    border:1px solid var(--cream-border);
-    border-radius:8px;
-    padding:16px;
-    margin-bottom:18px;
-  }
-
-  .price-recap-title{
-    font-size:11px;
-    text-transform:uppercase;
-    letter-spacing:0.1em;
-    font-weight:700;
-    color:var(--ink-soft);
-    text-align:center;
-    margin-bottom:12px;
-  }
-
-  .price-recap-row{
-    display:flex;
-    align-items:center;
-    gap:12px;
-    padding:10px 12px;
-    border-radius:6px;
-    margin-bottom:8px;
-  }
-
-  .price-recap-row:last-child{ margin-bottom:0; }
-
-  .price-recap-row.now{
-    background:var(--terracotta);
-  }
-
-  .price-recap-row.later{
-    background:var(--white);
-    border:1px dashed var(--cream-border);
-  }
-
-  .price-recap-step{
-    flex-shrink:0;
-    width:28px; height:28px;
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:13px;
-    font-weight:700;
-  }
-
-  .price-recap-row.now .price-recap-step{
-    background:rgba(255,255,255,0.25);
-    color:var(--white);
-  }
-
-  .price-recap-row.later .price-recap-step{
-    background:var(--ochre-light);
-    color:var(--ink-soft);
-  }
-
-  .price-recap-text{ flex:1; }
-
-  .price-recap-label{
-    font-size:13px;
-    font-weight:700;
-    color:var(--white);
-    margin-bottom:1px;
-  }
-
-  .price-recap-row.later .price-recap-label{ color:var(--ink); }
-
-  .price-recap-when{
-    font-size:11.5px;
-  }
-
-  .price-recap-row.now .price-recap-when{ color:rgba(255,255,255,0.85); }
-  .price-recap-row.later .price-recap-when{ color:var(--ink-soft); }
-
-  .price-recap-amount{
-    flex-shrink:0;
-    font-size:17px;
-    font-weight:700;
-    color:var(--white);
-    white-space:nowrap;
-  }
-
-  .price-recap-row.later .price-recap-amount{ color:var(--ink); }
-
-  .price-recap-total{
-    display:flex;
-    justify-content:space-between;
-    align-items:baseline;
-    padding:10px 4px 0;
-    margin-top:4px;
-    border-top:1px solid var(--cream-border);
-    font-size:12px;
-    color:var(--ink-soft);
-  }
-
-  .price-recap-total strong{
-    font-size:13px;
-    color:var(--terracotta-dark);
-  }
-
-  /* === CAS D'ÉTUDE — LE DAKAROIS === */
-  .case-study{
-    display:flex;
-    align-items:flex-start;
-    gap:12px;
-    background:var(--ochre-light);
-    border:1px solid var(--cream-border);
-    border-radius:8px;
-    padding:14px 16px;
-    margin-bottom:18px;
-  }
-
-  .case-study-icon{
-    flex-shrink:0;
-    width:36px; height:36px;
-    border-radius:50%;
-    background:var(--terracotta);
-    color:var(--white);
-    font-size:16px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-  }
-
-  .case-study-text{ flex:1; }
-
-  .case-study-title{
-    font-size:11px;
-    text-transform:uppercase;
-    letter-spacing:0.08em;
-    font-weight:700;
-    color:var(--terracotta-dark);
-    margin-bottom:4px;
-  }
-
-  .case-study p{
-    font-size:13px;
-    color:var(--ink);
-    line-height:1.55;
-  }
-
-  .case-study p strong{ color:var(--dark); }
-
-  /* === BLOC "À FAIRE MAINTENANT" === */
-  .action-now{
-    background:var(--ochre-light);
-    border:1.5px solid var(--ochre);
-    border-radius:8px;
-    padding:14px 16px;
-    margin-bottom:20px;
-    text-align:center;
-  }
-
-  .action-now-eyebrow{
-    font-size:11px;
-    text-transform:uppercase;
-    letter-spacing:0.08em;
-    font-weight:700;
-    color:var(--terracotta);
-    margin-bottom:6px;
-  }
-
-  .action-now p{
-    font-size:13.5px;
-    color:var(--ink);
-    line-height:1.6;
-  }
-
-  .action-now p strong{ color:var(--dark); }
+  .card-sub{ font-size:13px; color:var(--ink-soft); margin-bottom:18px; }
 
   .payment-box{
     background:var(--cream);
@@ -307,32 +623,20 @@
     font-size:13.5px;
   }
 
-  .payment-row + .payment-row{
-    border-top:1px solid var(--cream-border);
-  }
-
-  .payment-label{ font-weight:700; color:var(--dark); }
+  .payment-row + .payment-row{ border-top:1px solid var(--cream-border); }
+  .payment-label{ font-weight:700; color:var(--forest-green); }
   .payment-value{ color:var(--ink); font-weight:600; }
 
-  .payment-note{
-    font-size:12.5px;
-    color:var(--ink-soft);
-    margin-bottom:20px;
-    line-height:1.6;
-  }
+  .payment-note{ font-size:12.5px; color:var(--ink-soft); margin-bottom:20px; line-height:1.6; }
 
-  .step-header{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    margin:24px 0 12px;
-  }
+  .step-header{ display:flex; align-items:center; gap:10px; margin:24px 0 12px; }
+  .step-header:first-of-type{ margin-top:0; }
 
   .step-number{
     flex-shrink:0;
     width:26px; height:26px;
     border-radius:50%;
-    background:var(--dark);
+    background:var(--forest-green);
     color:var(--white);
     font-size:13px;
     font-weight:700;
@@ -344,7 +648,7 @@
   .step-title{
     font-size:13px;
     font-weight:700;
-    color:var(--dark);
+    color:var(--forest-green);
     text-transform:uppercase;
     letter-spacing:0.04em;
   }
@@ -358,14 +662,7 @@
 
   .field{ margin-bottom:16px; }
 
-  .field label{
-    display:block;
-    font-size:13px;
-    font-weight:700;
-    color:var(--ink);
-    margin-bottom:6px;
-  }
-
+  .field label{ display:block; font-size:13px; font-weight:700; color:var(--ink); margin-bottom:6px; }
   .field .req{ color:var(--terracotta); font-weight:400; }
 
   .field input[type="text"],
@@ -381,14 +678,10 @@
     font-family:inherit;
   }
 
-  .field input:focus{
-    outline:none;
-    border-color:var(--ochre);
-    box-shadow:0 0 0 3px rgba(217,165,61,0.2);
-  }
+  .field input:focus{ outline:none; border-color:var(--ochre); box-shadow:0 0 0 3px rgba(217,165,61,0.2); }
+  .field input[readonly]{ background:var(--ochre-light); color:var(--forest-green); font-weight:700; }
 
   fieldset{ border:none; margin:0; padding:0; }
-
   .options{ display:flex; flex-direction:column; gap:6px; }
 
   .option{
@@ -405,12 +698,7 @@
   }
 
   .option:hover{ border-color:var(--ochre); background:var(--ochre-light); }
-
-  .option input{
-    margin-top:3px;
-    accent-color:var(--terracotta);
-    flex-shrink:0;
-  }
+  .option input{ margin-top:3px; accent-color:var(--terracotta); flex-shrink:0; }
 
   .whatsapp-instruction{
     background:#E9F7EF;
@@ -441,219 +729,652 @@
   .submit-btn:active{ transform:scale(0.99); }
   .submit-btn:disabled{ opacity:0.6; cursor:default; }
 
-  .foot-note{
-    font-size:11.5px;
+  .back-link{
+    display:inline-block;
+    font-size:12px;
     color:var(--ink-soft);
-    text-align:center;
-    margin-top:12px;
-    line-height:1.6;
+    margin-bottom:18px;
+    cursor:pointer;
+    position:relative;
+    z-index:1;
   }
 
-  #success-message{
-    display:none;
-    text-align:center;
-    padding:12px 4px;
-  }
+  .back-link:hover{ color:var(--terracotta); }
 
-  #success-message h3{
-    font-family:'Georgia', serif;
-    font-size:20px;
-    color:var(--dark);
-    margin-bottom:10px;
-  }
+  .foot-note{ font-size:11.5px; color:var(--ink-soft); text-align:center; margin-top:12px; line-height:1.6; }
 
-  #success-message p{
-    font-size:13.5px;
-    color:var(--ink-soft);
-    line-height:1.7;
-  }
+  #success-message{ display:none; text-align:center; padding:12px 4px; }
+  #success-message h3{ font-family:'Georgia', serif; font-size:20px; color:var(--forest-green); margin-bottom:10px; }
+  #success-message p{ font-size:13.5px; color:var(--ink-soft); line-height:1.7; }
 
   a{ color:var(--ochre); text-decoration:none; }
 
+  @media(max-width:800px){
+    .page-wrap{ flex-direction:column; min-height:auto; }
+    .col-left{ min-height:auto; padding:36px 20px 28px; }
+    .col-right{ width:100%; min-height:auto; padding:20px 16px 40px; }
+  }
+
+  @media(max-width:700px){
+    .grid-2{ grid-template-columns:1fr; }
+    .evoffre-intro h1{ font-size:22px; }
+  }
+
   @media(max-width:480px){
     .card{ padding:20px 16px 20px; }
+    .progress-bar{ padding:12px; gap:6px; }
+    .progress-step span.progress-label{ display:none; }
   }
+
+  /* ============================================ */
+  /* WHATSAPP FLOTTANT — numéro de Mawa toujours visible */
+  /* ============================================ */
+  .whatsapp-float{
+    position:fixed;
+    bottom:18px;
+    right:18px;
+    z-index:999;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    background:#25D366;
+    color:#FFFFFF;
+    text-decoration:none;
+    padding:12px 18px 12px 14px;
+    border-radius:50px;
+    box-shadow:0 8px 24px rgba(37,211,102,0.45);
+    font-weight:700;
+    font-size:13.5px;
+    transition:transform 0.15s, box-shadow 0.15s;
+  }
+
+  .whatsapp-float:hover{
+    transform:translateY(-2px) scale(1.02);
+    box-shadow:0 12px 30px rgba(37,211,102,0.55);
+  }
+
+  .whatsapp-float:active{ transform:translateY(0) scale(0.98); }
+
+  .whatsapp-float-icon{
+    width:26px; height:26px;
+    flex-shrink:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+
+  .whatsapp-float-icon svg{ width:100%; height:100%; }
+
+  .whatsapp-float-text{ display:flex; flex-direction:column; line-height:1.25; }
+  .whatsapp-float-text small{ font-weight:500; font-size:10.5px; opacity:0.9; }
+
+  @media(max-width:480px){
+    .whatsapp-float{
+      bottom:14px; right:14px;
+      padding:11px 14px;
+    }
+    .whatsapp-float-text small{ display:none; }
+  }
+
+  /* Bandeau numéro WhatsApp — visible en haut de chaque écran */
+  .whatsapp-banner{
+    background:#0F2D18;
+    color:rgba(255,255,255,0.85);
+    text-align:center;
+    font-size:12px;
+    padding:8px 16px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    flex-wrap:wrap;
+  }
+
+  .whatsapp-banner a{
+    color:#7EE3A8;
+    font-weight:700;
+    text-decoration:none;
+  }
+
+  .whatsapp-banner a:hover{ text-decoration:underline; }
 </style>
 </head>
 <body>
 
-<div class="page-wrap">
+<!-- BANDEAU WHATSAPP — toujours visible -->
+<div class="whatsapp-banner">
+  💬 Une question ? Contactez Mawa Ndiaye directement sur WhatsApp :
+  <a href="https://wa.me/221777464344?text=Bonjour%20Mawa%2C%20j%27ai%20une%20question%20sur%20la%20Masterclass%20du%2015%20Juillet%202026" target="_blank" rel="noopener noreferrer">+221 77 746 43 44</a>
+</div>
 
-  <div class="col-right">
+<!-- BARRE DE PROGRESSION -->
+<div class="progress-bar">
+  <div class="progress-step is-active" id="progStep1">
+    <span class="progress-dot">1</span>
+    <span class="progress-label">Évaluer mon offre</span>
+  </div>
+  <div class="progress-line"></div>
+  <div class="progress-step" id="progStep2">
+    <span class="progress-dot">2</span>
+    <span class="progress-label">Réserver ma place</span>
+  </div>
+</div>
 
-    <!-- LIGNE D'ACCROCHE -->
-    <div class="intro-line">
-      <p class="intro-eyebrow">Masterclass Commerciale · 15 Juillet 2026</p>
-      <h1>Places limitées — <strong>réservez la vôtre dès maintenant.</strong></h1>
+<!-- ============================================ -->
+<!-- ÉCRAN 1 — EVOFFRE (lead magnet) -->
+<!-- ============================================ -->
+<div class="screen active" id="screen-evoffre">
+  <div class="evoffre-wrap">
+
+    <div class="evoffre-intro">
+      <div class="evoffre-eyebrow">EvOffre · Auto-évaluation gratuite</div>
+
+      <h1>Même offre. Même prix.<br>Lui vend. <em>Vous, non.</em></h1>
+
+      <p class="evoffre-pain">Ce n'est pas votre produit le problème. C'est ce que vos clients <strong>perçoivent</strong> de votre offre. Et tant que vous ne le mesurez pas, vous ne pouvez pas le corriger.</p>
+
+      <div class="evoffre-why">
+        <p>📊 <strong>En 2 minutes</strong>, EvOffre vous donne un score objectif sur 5 dimensions qui décident si un client achète ou passe son chemin : clarté, valeur perçue, preuve sociale, accessibilité, mémorabilité.</p>
+        <p>🎯 Ce diagnostic révèle <strong>où</strong> se cache votre vrai problème commercial — mais ne le résout pas. <span class="highlight">C'est exactement ce que la Masterclass du 15 Juillet fait</span> : à travers le cas d'Awa, vous repartez avec la méthode et un plan d'action de 30 jours pour faire passer chaque faiblesse identifiée de "intéressante" à "évidente".</p>
+      </div>
+
+      <div class="evoffre-steps">
+        <div class="evoffre-step"><span class="evoffre-step-num">1</span> Notez vos 20 critères</div>
+        <div class="evoffre-step"><span class="evoffre-step-num">2</span> Découvrez votre score réel</div>
+        <div class="evoffre-step"><span class="evoffre-step-num">3</span> Réservez votre place le 15 Juillet</div>
+      </div>
     </div>
 
-    <div class="card-wrap">
-      <div class="card">
+    <div class="grid-2" id="dimensionsContainer"></div>
 
-    <div id="success-message">
-      <h3>Merci — c'est presque fini ✅</h3>
-      <p>Votre inscription est enregistrée. Il ne reste qu'une étape : envoyez la <strong>capture d'écran de votre paiement</strong> sur WhatsApp au <strong>+221 77 746 43 44</strong> avec votre nom. Votre place sera confirmée dès réception.</p>
-      <p style="margin-top:10px;">Le solde de 34 000 FCFA vous sera demandé avant l'envoi du lien de connexion.</p>
+    <div class="recap" id="recapBlock">
+      <div class="recap-top">
+        <h3>📋 Votre feuille de score</h3>
+        <span class="score-total" id="totalScoreDisplay">0</span>
+      </div>
+      <div class="recap-grid" id="recapGrid"></div>
+      <div class="interpretation">
+        <span id="interpretationText" class="badge">🔍 Sélectionnez des notes</span>
+        <button class="btn-reset" id="resetBtn">↺ Réinitialiser</button>
+      </div>
+      <div class="level-label" id="levelLabel">—</div>
+
+      <div class="cta-next-wrap">
+        <p class="cta-next-text" id="ctaNextText">Évaluez tous les critères pour débloquer votre plan de transformation personnalisé.</p>
+        <button class="btn-next" id="btnGoToInscription" disabled>Voir comment rendre mon offre évidente →</button>
+        <p class="btn-next-hint">Étape suivante : réservez votre place à la Masterclass du 15 Juillet</p>
+      </div>
     </div>
 
-    <form id="preinscription-form" action="https://formspree.io/f/xrewpprk" method="POST">
+  </div>
+</div>
 
-      <div class="card-eyebrow">Pré-inscription</div>
-      <h2>Stratégie, Promotion & Manœuvres Commerciales</h2>
-      <p class="card-sub">Masterclass Live · Mawa Ndiaye · 15 Juillet 2026</p>
+<!-- ============================================ -->
+<!-- ÉCRAN 2 — PRÉ-INSCRIPTION MASTERCLASS -->
+<!-- ============================================ -->
+<div class="screen" id="screen-inscription">
+  <div class="page-wrap">
 
-      <!-- CAS D'ÉTUDE — LE DAKAROIS -->
-      <div class="case-study">
-        <span class="case-study-icon">🍽️</span>
-        <div class="case-study-text">
-          <p class="case-study-title">Le cas étudié pendant le live</p>
-          <p><strong>Awa</strong> et son service de livraison de plats sénégalais à Dakar, <strong>Le Dakarois</strong> — comment elle a rendu son offre évidente en 30 jours, sans budget pub ni changement de recette.</p>
-        </div>
+    <!-- COLONNE GAUCHE — promesse -->
+    <div class="col-left">
+      <span class="back-link" id="backToEvoffre">← Revoir mon évaluation</span>
+
+      <div class="eyebrow">Masterclass Commerciale · En live</div>
+
+      <div class="hero-promise">
+        <p class="hero-label">Votre offre</p>
+        <p class="promise-line">
+          <span class="promise-before">intéressante</span>
+          <span class="promise-arrow">→</span>
+          <span class="promise-after">évidente</span>
+        </p>
       </div>
 
-      <!-- TABLEAU RÉCAPITULATIF ACOMPTE / SOLDE -->
-      <div class="price-recap">
-        <p class="price-recap-title">Comment se passe le paiement</p>
+      <p class="hero-sub">À travers le cas d'Awa — Le Dakarois</p>
+      <p class="hero-awa">30 jours · zéro budget · tout changé</p>
 
-        <div class="price-recap-row now">
-          <span class="price-recap-step">1</span>
-          <span class="price-recap-text">
-            <span class="price-recap-label">Acompte — à payer maintenant</span>
-            <span class="price-recap-when">Réserve votre place</span>
-          </span>
-          <span class="price-recap-amount">1 000 F</span>
-        </div>
-
-        <div class="price-recap-row later">
-          <span class="price-recap-step">2</span>
-          <span class="price-recap-text">
-            <span class="price-recap-label">Solde — avant le 15 juillet</span>
-            <span class="price-recap-when">Confirme votre accès au live</span>
-          </span>
-          <span class="price-recap-amount">34 000 F</span>
-        </div>
-
-        <div class="price-recap-total">
-          <span>Total masterclass</span>
-          <strong>35 000 FCFA</strong>
-        </div>
+      <!-- Score personnel injecté ici -->
+      <div class="your-score" id="yourScoreBlock">
+        <span class="your-score-num" id="yourScoreNum">—</span>
+        <span class="your-score-text">Votre score EvOffre. <strong id="yourScoreLevel">—</strong><br>C'est exactement ce qu'on travaille ensemble le 15 Juillet.</span>
       </div>
 
-      <!-- BLOC "À FAIRE MAINTENANT" -->
-      <div class="action-now">
-        <p class="action-now-eyebrow">👉 À faire maintenant</p>
-        <p>Envoyez <strong>1 000 FCFA</strong> via Wave ou Orange Money, puis remplissez le formulaire ci-dessous.</p>
+      <div class="hero-accroche">
+        <p>Votre offre aujourd'hui est intéressante —<br>les gens regardent, hochent la tête, et passent à autre chose.</p>
+        <div class="divider"></div>
+        <p>Après cette masterclass, <strong>cette même offre devient évidente.</strong><br>Le client n'a plus de raison de dire non.</p>
       </div>
 
-      <!-- ÉTAPE 1 -->
-      <div class="step-header">
-        <span class="step-number">1</span>
-        <span class="step-title">Payez l'acompte de 1 000 F</span>
+      <div class="pills">
+        <span class="pill">Mercredi 15 Juillet 2026</span>
+        <span class="pill">17h30 – 20h30</span>
       </div>
-      <div class="step-block">
-        <div class="payment-box">
-          <div class="payment-row">
-            <span class="payment-label">Wave</span>
-            <span class="payment-value">+221 77 746 43 44</span>
+      <div class="pills" style="margin-top:6px;">
+        <span class="pill light">3h en live</span>
+        <span class="pill light">Plan d'action 30 jours</span>
+        <span class="pill light">Mawa Ndiaye</span>
+      </div>
+    </div>
+
+    <!-- COLONNE DROITE — formulaire -->
+    <div class="col-right">
+      <div class="card-wrap">
+        <div class="card">
+
+          <div id="success-message">
+            <h3>Merci — c'est presque fini ✅</h3>
+            <p>Votre inscription est enregistrée. Il ne reste qu'une étape : envoyez la <strong>capture d'écran de votre paiement</strong> sur WhatsApp au <strong>+221 77 746 43 44</strong> avec votre nom. Votre place sera confirmée dès réception.</p>
+            <p style="margin-top:10px;">Le solde de 34 000 FCFA vous sera demandé avant l'envoi du lien de connexion.</p>
           </div>
-          <div class="payment-row">
-            <span class="payment-label">Orange Money</span>
-            <span class="payment-value">+221 77 746 43 44</span>
-          </div>
-        </div>
-        <p class="payment-note">Cet acompte de <strong>1 000 FCFA (non remboursable)</strong> bloque votre place. Le <strong>solde de 34 000 FCFA</strong> sera à régler avant l'envoi du lien de connexion à la masterclass.</p>
-      </div>
 
-      <!-- ÉTAPE 2 -->
-      <div class="step-header">
-        <span class="step-number">2</span>
-        <span class="step-title">Remplissez vos informations</span>
-      </div>
-      <div class="step-block">
-        <div class="field">
-          <label for="name">Nom complet <span class="req">*</span></label>
-          <input type="text" id="name" name="Nom complet" required autocomplete="name">
-        </div>
-        <div class="field">
-          <label for="whatsapp">Numéro WhatsApp <span class="req">*</span></label>
-          <input type="tel" id="whatsapp" name="WhatsApp" placeholder="+221 ..." required autocomplete="tel">
-        </div>
-        <div class="field">
-          <label for="email">Adresse email <span class="req">*</span></label>
-          <input type="email" id="email" name="Email" placeholder="vous@exemple.com" required autocomplete="email">
-        </div>
-        <div class="field">
-          <fieldset>
-            <label>35 000 FCFA pour 3h en direct : ça vous semble juste ou trop cher ? <span class="req">*</span></label>
-            <div class="options">
-              <label class="option"><input type="radio" name="Avis prix" value="C'est juste" required> C'est juste pour ce que ça propose</label>
-              <label class="option"><input type="radio" name="Avis prix" value="C'est un peu cher"> C'est un peu cher pour moi</label>
-              <label class="option"><input type="radio" name="Avis prix" value="Besoin de plus d'infos"> J'ai besoin de plus d'infos avant de décider</label>
+          <form id="preinscription-form" action="https://formspree.io/f/xrewpprk" method="POST">
+
+            <div class="card-eyebrow">Pré-inscription</div>
+            <h2>Stratégie, Promotion & Manœuvres Commerciales</h2>
+            <p class="card-sub">Masterclass Live · Mawa Ndiaye · 15 Juillet 2026</p>
+
+            <!-- ÉTAPE 1 -->
+            <div class="step-header">
+              <span class="step-number">1</span>
+              <span class="step-title">Payez l'acompte maintenant</span>
             </div>
-          </fieldset>
-        </div>
-        <div class="field">
-          <fieldset>
-            <label>Moyen utilisé pour l'acompte <span class="req">*</span></label>
-            <div class="options">
-              <label class="option"><input type="radio" name="Moyen de paiement" value="Wave" required> Wave</label>
-              <label class="option"><input type="radio" name="Moyen de paiement" value="Orange Money"> Orange Money</label>
+            <div class="step-block">
+              <div class="payment-box">
+                <div class="payment-row">
+                  <span class="payment-label">Wave</span>
+                  <span class="payment-value">+221 77 746 43 44</span>
+                </div>
+                <div class="payment-row">
+                  <span class="payment-label">Orange Money</span>
+                  <span class="payment-value">+221 77 746 43 44</span>
+                </div>
+              </div>
+              <p class="payment-note">Envoyez <strong>1 000 FCFA (non remboursable)</strong> via Wave ou Orange Money pour bloquer votre place. Le solde de <strong>34 000 FCFA</strong> vous sera demandé avant l'envoi du lien de connexion.</p>
             </div>
-          </fieldset>
+
+            <!-- ÉTAPE 2 -->
+            <div class="step-header">
+              <span class="step-number">2</span>
+              <span class="step-title">Remplissez vos informations</span>
+            </div>
+            <div class="step-block">
+              <div class="field">
+                <label for="name">Nom complet <span class="req">*</span></label>
+                <input type="text" id="name" name="Nom complet" required autocomplete="name">
+              </div>
+              <div class="field">
+                <label for="whatsapp">Numéro WhatsApp <span class="req">*</span></label>
+                <input type="tel" id="whatsapp" name="WhatsApp" placeholder="+221 ..." required autocomplete="tel">
+              </div>
+              <div class="field">
+                <label for="email">Adresse email <span class="req">*</span></label>
+                <input type="email" id="email" name="Email" placeholder="vous@exemple.com" required autocomplete="email">
+              </div>
+              <div class="field">
+                <label for="evoffre_score">Votre score EvOffre</label>
+                <input type="text" id="evoffre_score" name="Score EvOffre" readonly>
+              </div>
+              <div class="field">
+                <fieldset>
+                  <label>35 000 FCFA pour 3h en direct : ça vous semble juste ou trop cher ? <span class="req">*</span></label>
+                  <div class="options">
+                    <label class="option"><input type="radio" name="Avis prix" value="C'est juste" required> C'est juste pour ce que ça propose</label>
+                    <label class="option"><input type="radio" name="Avis prix" value="C'est un peu cher"> C'est un peu cher pour moi</label>
+                    <label class="option"><input type="radio" name="Avis prix" value="Besoin de plus d'infos"> J'ai besoin de plus d'infos avant de décider</label>
+                  </div>
+                </fieldset>
+              </div>
+              <div class="field">
+                <fieldset>
+                  <label>Moyen utilisé pour l'acompte <span class="req">*</span></label>
+                  <div class="options">
+                    <label class="option"><input type="radio" name="Moyen de paiement" value="Wave" required> Wave</label>
+                    <label class="option"><input type="radio" name="Moyen de paiement" value="Orange Money"> Orange Money</label>
+                  </div>
+                </fieldset>
+              </div>
+            </div>
+
+            <!-- ÉTAPE 3 -->
+            <div class="step-header">
+              <span class="step-number">3</span>
+              <span class="step-title">Envoyez la preuve sur WhatsApp</span>
+            </div>
+            <div class="step-block">
+              <div class="whatsapp-instruction">
+                📲 Après ce formulaire, faites une <strong>capture d'écran de votre paiement</strong> et envoyez-la sur WhatsApp au <strong>+221 77 746 43 44</strong> avec votre nom. Votre place est confirmée dès réception.
+                <br><br>
+                Autre moyen de paiement ? Contactez Mawa directement sur ce même numéro.
+              </div>
+            </div>
+
+            <input type="hidden" name="_subject" value="Pré-inscription — Masterclass 15 Juillet 2026 — Mawa Ndiaye">
+
+            <button type="submit" class="submit-btn">Réserver ma place →</button>
+            <p class="foot-note">Vos informations servent uniquement à vous recontacter pour cette masterclass.</p>
+          </form>
+
         </div>
       </div>
-
-      <!-- ÉTAPE 3 -->
-      <div class="step-header">
-        <span class="step-number">3</span>
-        <span class="step-title">Envoyez la preuve sur WhatsApp</span>
-      </div>
-      <div class="step-block">
-        <div class="whatsapp-instruction">
-          📲 Après ce formulaire, faites une <strong>capture d'écran de votre paiement</strong> et envoyez-la sur WhatsApp au <strong>+221 77 746 43 44</strong> avec votre nom. Votre place est confirmée dès réception.
-          <br><br>
-          Autre moyen de paiement ? Contactez Mawa directement sur ce même numéro.
-        </div>
-      </div>
-
-      <input type="hidden" name="_subject" value="Pré-inscription — Masterclass 15 Juillet 2026 — Mawa Ndiaye">
-
-      <button type="submit" class="submit-btn">Réserver ma place →</button>
-      <p class="foot-note">Vos informations servent uniquement à vous recontacter pour cette masterclass.</p>
-    </form>
+    </div>
 
   </div>
 </div>
 
 <script>
-  const form = document.getElementById('preinscription-form');
-  const successMessage = document.getElementById('success-message');
+(function(){
+  'use strict';
 
-  form.addEventListener('submit', async function(e){
-    e.preventDefault();
-    const btn = form.querySelector('.submit-btn');
-    btn.textContent = 'Envoi en cours...';
-    btn.disabled = true;
+  function $(id){ return document.getElementById(id); }
 
+  /* ============================================ */
+  /* PARTIE EVOFFRE */
+  /* ============================================ */
+  const dimensions = [
+    { id:'D1', label:'Clarté', max:20, criteres:[
+      { id:'c1_1', label:'Que vendez-vous ?', desc:'3 secondes', help:'Le client comprend-il en 3s ce que vous vendez ? 5 = produit + bénéfice clair ; 3 = hésitation ; 1 = hors sujet' },
+      { id:'c1_2', label:'Pour qui ?', desc:'cible identifiable', help:'Votre cible est-elle précise ? 5 = ultra-précise (âge, métier) ; 3 = floue ; 1 = aucune cible' },
+      { id:'c1_3', label:'Pourquoi vous ?', desc:'avantage concurrentiel', help:'Votre avantage est-il évident ? 5 = unique et perçu ; 3 = présent mais pas mis en avant ; 1 = moins bien que les concurrents' },
+      { id:'c1_4', label:'Quand / Où ?', desc:'modalités claires', help:"Horaires, livraison, paiement sont-ils clairs ? 5 = tout est clair ; 3 = infos manquantes ; 1 = rien n'est clair" }
+    ]},
+    { id:'D2', label:'Valeur perçue', max:20, criteres:[
+      { id:'c2_1', label:'Rapport qualité/prix', desc:'prix juste', help:'Le prix est-il perçu comme juste ? 5 = qualité exceptionnelle, "ça vaut le coup" ; 3 = un peu cher ; 1 = injustifié' },
+      { id:'c2_2', label:'Avantages perçus', desc:'bénéfices visibles', help:'Le client voit-il les bénéfices ? 5 = 3+ bénéfices clairs ; 3 = 1 bénéfice ; 1 = aucun' },
+      { id:'c2_3', label:'Différenciation', desc:'se distinguer', help:'Vous distinguez-vous des alternatives ? 5 = unique sur 2 aspects ; 3 = petite différence ; 1 = moins bien' },
+      { id:'c2_4', label:'Urgence', desc:'acheter maintenant', help:"Y a-t-il une raison d'acheter maintenant ? 5 = plusieurs raisons (promo, stock) ; 3 = raison faible ; 1 = aucune" }
+    ]},
+    { id:'D3', label:'Preuve sociale', max:20, criteres:[
+      { id:'c3_1', label:'Témoignages / avis', desc:'preuves de satisfaction', help:'Avez-vous des avis clients ? 5 = 50+ avis, photos, note >4.5 ; 3 = 5-10 avis ; 1 = aucun' },
+      { id:'c3_2', label:'Notoriété', desc:'reconnu', help:'Êtes-vous connu/reconnu ? 5 = référence dans le secteur ; 3 = connu de certains cercles ; 1 = personne ne vous connaît' },
+      { id:'c3_3', label:'Réassurance', desc:'garanties', help:'Des garanties rassurent-elles ? 5 = garantie + paiement sécurisé ; 3 = un élément ; 1 = aucun' },
+      { id:'c3_4', label:'Présence pro', desc:'supports crédibles', help:'Vos supports sont-ils professionnels ? 5 = site pro, branding cohérent ; 3 = correct mais améliorable ; 1 = pas de support' }
+    ]},
+    { id:'D4', label:'Accessibilité', max:20, criteres:[
+      { id:'c4_1', label:"Facilité d'achat", desc:'étapes', help:"Combien d'étapes pour commander ? 5 = 1-2 étapes ; 3 = 5-6 étapes ; 1 = plus de 8" },
+      { id:'c4_2', label:'Réactivité', desc:'temps de réponse', help:'Temps de réponse rapide ? 5 = moins de 5 min ; 3 = 15-30 min ; 1 = plus d\'1h' },
+      { id:'c4_3', label:'Expérience client', desc:'parcours agréable', help:'Le parcours est-il agréable ? 5 = fluide et professionnel ; 3 = correct mais impersonnel ; 1 = frustrant' },
+      { id:'c4_4', label:'Suivi post-achat', desc:'après la commande', help:'Y a-t-il un suivi ? 5 = confirmation + remerciement + demande avis ; 3 = confirmation + remerciement ; 1 = aucun' }
+    ]},
+    { id:'D5', label:'Mémorabilité', max:20, criteres:[
+      { id:'c5_1', label:'Storytelling', desc:'histoire marquante', help:'Votre offre a-t-elle une histoire ? 5 = forte et authentique ; 3 = banale ; 1 = aucune' },
+      { id:'c5_2', label:'Partageabilité', desc:'recommandation spontanée', help:'Les clients recommandent-ils spontanément ? 5 = 80-100% ; 3 = 30-59% ; 1 = 0-9%' },
+      { id:'c5_3', label:'Identité visuelle', desc:'reconnaissable', help:'Êtes-vous reconnaissable ? 5 = logo, couleurs, cohérence ; 3 = éléments peu cohérents ; 1 = aucune identité' },
+      { id:'c5_4', label:'Fidélisation', desc:'raisons de revenir', help:'Y a-t-il des raisons de revenir ? 5 = programme complet ; 3 = offres occasionnelles ; 1 = aucune' }
+    ]}
+  ];
+
+  const allCriteres = dimensions.flatMap(d => d.criteres.map(c => ({ ...c, dimId:d.id })));
+  let notes = {};
+  allCriteres.forEach(c => { notes[c.id] = 0; });
+
+  let currentScoreData = { total:0, complete:false, levelText:'', levelLabel:'' };
+
+  function render(){
     try{
-      const response = await fetch(form.action, {
-        method:'POST',
-        body: new FormData(form),
-        headers:{ 'Accept':'application/json' }
+      const container = $('dimensionsContainer');
+      if(!container) return;
+      container.innerHTML = '';
+
+      dimensions.forEach(dim => {
+        const card = document.createElement('div');
+        card.className = 'dimension-card';
+
+        let criteresHTML = '';
+        dim.criteres.forEach(crit => {
+          const val = notes[crit.id] || 0;
+          const options = [0,1,2,3,4,5].map(n => {
+            const selected = (val === n) ? 'selected' : '';
+            const label = n === 0 ? '▪' : n;
+            return `<option value="${n}" ${selected}>${label}</option>`;
+          }).join('');
+
+          criteresHTML += `
+            <div class="critere">
+              <div class="critere-header">
+                <span class="critere-name">${crit.label}</span>
+                <span class="critere-points">${crit.desc}</span>
+              </div>
+              <div class="critere-help">${crit.help || ''}</div>
+              <div style="display:flex;align-items:center;gap:0.6rem;margin-top:0.4rem;">
+                <select data-id="${crit.id}" aria-label="Note pour ${crit.label}">${options}</select>
+                <span class="note-indicator" id="noteLabel_${crit.id}">${val > 0 ? val + '/5' : '—'}</span>
+              </div>
+            </div>
+          `;
+        });
+
+        let dimSum = 0, dimCount = 0;
+        dim.criteres.forEach(c => { const v = notes[c.id] || 0; if(v>0){dimSum+=v; dimCount++;} });
+        const sousTotalDisplay = dimCount === dim.criteres.length ? dimSum : (dimCount > 0 ? dimSum + ' / ' + dim.max : '—');
+
+        card.innerHTML = `
+          <div class="dimension-title">
+            ${dim.id} – ${dim.label}
+            <span>${dim.max} pts</span>
+          </div>
+          ${criteresHTML}
+          <div class="sous-total">
+            <span>Sous-total ${dim.id}</span>
+            <span class="score-box" id="subtotal_${dim.id}">${sousTotalDisplay}</span>
+          </div>
+        `;
+        container.appendChild(card);
       });
-      if(response.ok){
-        form.style.display = 'none';
-        successMessage.style.display = 'block';
-      } else {
-        throw new Error();
+
+      updateRecap();
+      updateTotalScore();
+
+      document.querySelectorAll('select[data-id]').forEach(sel => {
+        sel.addEventListener('change', function(){
+          try{
+            const id = this.dataset.id;
+            const val = parseInt(this.value, 10) || 0;
+            notes[id] = val;
+            const label = $('noteLabel_' + id);
+            if(label) label.textContent = val > 0 ? val + '/5' : '—';
+            updateSubtotals();
+            updateRecap();
+            updateTotalScore();
+          } catch(err){
+            console.error('Erreur lors de la mise à jour de la note :', err);
+          }
+        });
+      });
+
+      const resetBtn = $('resetBtn');
+      if(resetBtn){
+        resetBtn.addEventListener('click', function(){
+          allCriteres.forEach(c => { notes[c.id] = 0; });
+          render();
+        });
       }
     } catch(err){
-      btn.textContent = 'Réserver ma place →';
-      btn.disabled = false;
-      alert("Une erreur est survenue. Contactez Mawa directement sur WhatsApp au +221 77 746 43 44.");
+      console.error('Erreur lors du rendu EvOffre :', err);
     }
-  });
+  }
+
+  function updateSubtotals(){
+    dimensions.forEach(dim => {
+      let sum=0, count=0;
+      dim.criteres.forEach(c => { const v=notes[c.id]||0; if(v>0){sum+=v;count++;} });
+      const el = $('subtotal_' + dim.id);
+      if(el) el.textContent = count === dim.criteres.length ? sum + ' / ' + dim.max : (count > 0 ? sum + ' / ' + dim.max : '—');
+    });
+  }
+
+  function updateRecap(){
+    const grid = $('recapGrid');
+    if(!grid) return;
+    grid.innerHTML = '';
+    dimensions.forEach(dim => {
+      let sum=0, count=0;
+      dim.criteres.forEach(c => { const v=notes[c.id]||0; if(v>0){sum+=v;count++;} });
+      const display = count === dim.criteres.length ? sum : (count > 0 ? sum + ' / ' + dim.max : '—');
+      const div = document.createElement('div');
+      div.className = 'recap-item';
+      div.innerHTML = `<span>${dim.id}</span><span style="font-weight:700;">${display}</span>`;
+      grid.appendChild(div);
+    });
+  }
+
+  function updateTotalScore(){
+    let total=0, totalCount=0;
+    allCriteres.forEach(c => { const v=notes[c.id]||0; if(v>0){total+=v;totalCount++;} });
+
+    const scoreEl = $('totalScoreDisplay');
+    const levelLabel = $('levelLabel');
+    const interpText = $('interpretationText');
+    const btnNext = $('btnGoToInscription');
+    const ctaNextText = $('ctaNextText');
+
+    if(!scoreEl || !levelLabel || !interpText || !btnNext || !ctaNextText) return;
+
+    const isComplete = totalCount === allCriteres.length;
+
+    if(isComplete){
+      scoreEl.textContent = total + ' / 100';
+      let level='', emoji='';
+      if(total>=81){ level='🏆 Évidente'; emoji='Offre perçue comme une évidence'; }
+      else if(total>=61){ level='👍 Bonne'; emoji='Offre solide, perfectible'; }
+      else if(total>=41){ level='📊 Correcte'; emoji='Offre standard, sans différenciation'; }
+      else if(total>=21){ level='⚠️ Floue'; emoji="Les clients ne comprennent pas clairement"; }
+      else { level='🔴 Invisible'; emoji="Offre inexistante dans l'esprit du client"; }
+
+      levelLabel.textContent = 'Niveau : ' + level;
+      interpText.textContent = emoji;
+
+      currentScoreData = { total, complete:true, levelText:level, levelLabel:emoji };
+
+      btnNext.disabled = false;
+      btnNext.setAttribute('aria-disabled', 'false');
+      ctaNextText.innerHTML = `Votre score est <strong>${total}/100 — ${level}</strong>. Découvrez la méthode pour faire passer votre offre du niveau actuel à <strong>"Évidente"</strong>.`;
+    } else {
+      scoreEl.textContent = totalCount > 0 ? total + ' / 100' : '0';
+      levelLabel.textContent = totalCount > 0 ? `⚠️ ${totalCount}/${allCriteres.length} critères évalués` : 'Aucune note sélectionnée';
+      interpText.textContent = '🔍 Sélectionnez des notes';
+      currentScoreData = { total, complete:false, levelText:'', levelLabel:'' };
+      btnNext.disabled = true;
+      btnNext.setAttribute('aria-disabled', 'true');
+      ctaNextText.textContent = 'Évaluez tous les critères pour débloquer votre plan de transformation personnalisé.';
+    }
+  }
+
+  render();
+
+  /* ============================================ */
+  /* NAVIGATION ENTRE ÉCRANS */
+  /* ============================================ */
+  const screenEvoffre = $('screen-evoffre');
+  const screenInscription = $('screen-inscription');
+  const progStep1 = $('progStep1');
+  const progStep2 = $('progStep2');
+
+  function goToInscription(){
+    try{
+      if(!currentScoreData.complete) return;
+
+      const yourScoreNum = $('yourScoreNum');
+      const yourScoreLevel = $('yourScoreLevel');
+      const evoffreScoreField = $('evoffre_score');
+
+      if(yourScoreNum) yourScoreNum.textContent = currentScoreData.total;
+      if(yourScoreLevel) yourScoreLevel.textContent = currentScoreData.levelText + ' (' + currentScoreData.total + '/100)';
+      if(evoffreScoreField) evoffreScoreField.value = currentScoreData.total + '/100 — ' + currentScoreData.levelText;
+
+      if(screenEvoffre) screenEvoffre.classList.remove('active');
+      if(screenInscription) screenInscription.classList.add('active');
+      if(progStep1){ progStep1.classList.remove('is-active'); progStep1.classList.add('is-done'); }
+      if(progStep2) progStep2.classList.add('is-active');
+
+      window.scrollTo({top:0, behavior:'smooth'});
+    } catch(err){
+      console.error('Erreur lors de la transition vers la pré-inscription :', err);
+      if(screenEvoffre) screenEvoffre.classList.remove('active');
+      if(screenInscription) screenInscription.classList.add('active');
+      window.scrollTo(0,0);
+    }
+  }
+
+  function goToEvoffre(){
+    try{
+      if(screenInscription) screenInscription.classList.remove('active');
+      if(screenEvoffre) screenEvoffre.classList.add('active');
+      if(progStep2) progStep2.classList.remove('is-active');
+      if(progStep1){ progStep1.classList.remove('is-done'); progStep1.classList.add('is-active'); }
+      window.scrollTo({top:0, behavior:'smooth'});
+    } catch(err){
+      console.error('Erreur lors du retour à EvOffre :', err);
+    }
+  }
+
+  const btnGoToInscription = $('btnGoToInscription');
+  if(btnGoToInscription){
+    btnGoToInscription.addEventListener('click', goToInscription);
+  }
+
+  const backToEvoffre = $('backToEvoffre');
+  if(backToEvoffre){
+    backToEvoffre.addEventListener('click', goToEvoffre);
+    backToEvoffre.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); goToEvoffre(); }
+    });
+  }
+
+  /* ============================================ */
+  /* FORMULAIRE PRÉ-INSCRIPTION */
+  /* ============================================ */
+  const form = $('preinscription-form');
+  const successMessage = $('success-message');
+
+  if(form){
+    form.addEventListener('submit', async function(e){
+      e.preventDefault();
+      const btn = form.querySelector('.submit-btn');
+      if(btn){
+        btn.textContent = 'Envoi en cours...';
+        btn.disabled = true;
+      }
+
+      try{
+        const response = await fetch(form.action, {
+          method:'POST',
+          body: new FormData(form),
+          headers:{ 'Accept':'application/json' }
+        });
+
+        if(response.ok){
+          form.style.display = 'none';
+          if(successMessage) successMessage.style.display = 'block';
+          window.scrollTo({top:0, behavior:'smooth'});
+        } else {
+          throw new Error('Réponse serveur non valide (code ' + response.status + ')');
+        }
+      } catch(err){
+        console.error("Erreur lors de l'envoi du formulaire :", err);
+        if(btn){
+          btn.textContent = 'Réserver ma place →';
+          btn.disabled = false;
+        }
+        alert("Une erreur est survenue lors de l'envoi. Réessayez, ou contactez directement Mawa Ndiaye sur WhatsApp au +221 77 746 43 44.");
+      }
+    });
+  }
+
+})();
 </script>
+
+<!-- BOUTON WHATSAPP FLOTTANT -->
+<a class="whatsapp-float" href="https://wa.me/221777464344?text=Bonjour%20Mawa%2C%20je%20souhaite%20avoir%20des%20informations%20sur%20la%20Masterclass%20du%2015%20Juillet%202026" target="_blank" rel="noopener noreferrer" aria-label="Contacter Mawa Ndiaye sur WhatsApp au +221 77 746 43 44">
+  <span class="whatsapp-float-icon">
+    <svg viewBox="0 0 32 32" fill="white" xmlns="http://www.w3.org/2000/svg">
+      <path d="M16.001 3C9.107 3 3.5 8.607 3.5 15.5c0 2.42.674 4.683 1.845 6.612L3 29l7.073-2.292A12.43 12.43 0 0016.001 28C22.894 28 28.5 22.393 28.5 15.5S22.894 3 16.001 3zm0 22.7c-1.98 0-3.825-.55-5.4-1.5l-.387-.23-4.2 1.362 1.38-4.09-.252-.42A10.16 10.16 0 015.8 15.5c0-5.633 4.567-10.2 10.2-10.2s10.2 4.567 10.2 10.2-4.567 10.2-10.2 10.2zm5.59-7.64c-.306-.153-1.812-.894-2.093-.996-.28-.102-.484-.153-.688.153-.204.306-.79.996-.969 1.2-.179.205-.357.23-.663.077-.306-.153-1.293-.477-2.464-1.522-.91-.812-1.524-1.815-1.703-2.12-.179-.307-.02-.473.134-.625.137-.137.306-.357.459-.536.153-.18.204-.307.306-.51.102-.205.05-.384-.026-.537-.077-.153-.688-1.66-.943-2.273-.248-.597-.5-.516-.688-.526-.179-.008-.382-.01-.586-.01-.204 0-.536.077-.816.383-.28.307-1.07 1.046-1.07 2.552 0 1.506 1.095 2.962 1.247 3.166.153.205 2.155 3.293 5.222 4.617.73.315 1.298.503 1.742.643.732.233 1.398.2 1.925.122.587-.088 1.812-.741 2.068-1.456.255-.715.255-1.328.179-1.456-.077-.128-.281-.205-.587-.358z"/>
+    </svg>
+  </span>
+  <span class="whatsapp-float-text">
+    <span>WhatsApp Mawa</span>
+    <small>+221 77 746 43 44</small>
+  </span>
+</a>
 
 </body>
 </html>
